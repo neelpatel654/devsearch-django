@@ -1,14 +1,28 @@
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.contrib.auth.decorators import login_required
-from .models import Project
+from .models import Project, Tag
 from django.urls import path
 from .forms import ProjectForm
-
+from django.db.models import Q
 
 def projects(request):
-    projects = Project.objects.all()
-    context = {"projects":projects}
+    search_query = ''
+
+    if request.GET.get('search_query'):
+        search_query = request.GET.get('search_query')
+
+    tags = Tag.objects.filter(name__icontains=search_query)
+
+    projects = Project.objects.distinct().filter(
+        Q(title__icontains=search_query)|
+        Q(description__icontains = search_query)|
+        Q(owner__name__icontains = search_query)|
+        Q(tags__in= tags)
+    )
+
+
+    context = {"projects":projects,"search_query":search_query}
     return render(request,"projects/projects.html",context)
 
 def project(request,pk):
