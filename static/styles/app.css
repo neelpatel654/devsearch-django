@@ -641,7 +641,6 @@ img {
 .auth {
   width: 100%;
   position: relative;
-  z-index: 1;
   background: transparent;
   height: 99vh;
   display: flex;
@@ -649,18 +648,16 @@ img {
   align-items: center;
 }
 
-.auth::after {
-  z-index: -1;
+ .auth::after {
   opacity: 0.1;
-  content: '';
   display: block;
   position: fixed;
+  background-color: black;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  background: url(../images/pattern.jpg);
-}
+ } 
 
 .auth > .card {
   padding: 3rem 4rem;

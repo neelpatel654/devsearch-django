@@ -13,25 +13,29 @@
               <h2 class="dev__name">{{profile.name}}</h2>
               <p class="dev__title">{{profile.short_intro}}</p>
               <p class="dev__location">{{profile.location}}</p>
-              <ul class="dev__social">
-                {% if profile.social_github %}
-                <li>
-                  <a title="Github" href="{{profile.social_github}}" target="_blank"><i class="im im-github"></i></a>
-                </li>
-                {% endif %}
-                <li>
-                  <a title="Stackoverflow" href="#" target="_blank"><i class="im im-stackoverflow"></i></a>
-                </li>
-                <li>
-                  <a title="Twitter" href="#" target="_blank"><i class="im im-twitter"></i></a>
-                </li>
-                <li>
-                  <a title="LinkedIn" href="#" target="_blank"><i class="im im-linkedin"></i></a>
-                </li>
-                <li>
-                  <a title="Personal Website" href="#" target="_blank"><i class="im im-globe"></i></a>
-                </li>
-              </ul>
+              {% if profile.social_github %}
+              <li>
+                <a title="Github" href="{{profile.social_github}}" target="_blank"><i class="im im-github"></i></a>
+              </li>
+              {% endif %}
+
+              {% if profile.social_twitter %}
+              <li>
+                <a title="Twitter" href="{{profile.social_twitter}}" target="_blank"><i class="im im-twitter"></i></a>
+              </li>
+              {% endif %}
+
+              {% if profile.social_linkedIn %}
+              <li>
+                <a title="LinkedIn" href="{{profile.social_linkedIn}}" target="_blank"><i class="im im-linkedin"></i></a>
+              </li>
+              {% endif %}
+
+              {% if profile.social_website %}
+              <li>
+                <a title="Personal Website" href="{{profile.social_website}}" target="_blank"><i class="im im-globe"></i></a>
+              </li>
+              {% endif %}
               <a href="#" class="btn btn--sub btn--lg">Send Message </a>
             </div>
           </div>
